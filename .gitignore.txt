@@ -24,7 +24,3 @@ effective-settings.xml
 .cache
 .idea/
 *.iml
-*.log
-*.lck
-*.jar
-*/dependency-reduced-pom.xml
