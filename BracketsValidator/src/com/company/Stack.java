@@ -16,19 +16,19 @@ public class Stack {
 
 
     String pop() {
-        String elemToReturn = new String();
+        String elemsToReturn = new String();//ошибку исправил
         if (count>0) {
-             elemToReturn = elements[count - 1];
+             elemsToReturn = elements[count - 1];
             count--;
         } else {
-             elemToReturn ="";
+             elemsToReturn ="";
         }
-        return elemToReturn;
+        return elemsToReturn;
     }
 
     int size(){
 
-        return count;
+        return count;//возращение счетчика добавил
 
     }
 }
