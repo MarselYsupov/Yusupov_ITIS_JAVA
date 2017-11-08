@@ -8,5 +8,6 @@ public class Main {
         ProductsDao dao = new ProductsDaoTxtImplementation();
      dao.remove("хлеб");
 
+
     }
 }
