@@ -40,26 +40,33 @@ public class LinkedList<T> {
             return getElem;
         }
     }
+    int size() {
+        return count;
+    }
 
     void remove (int i) {
         if (i < 0 || i >= count) {
             throw new IndexOutOfBoundsException("Incorrect index: " + i);
         } else {
-            Node<T> cur = head;
-
-            int getIndex = 0;
-            while (cur.getNext() != null) {
-                if(getIndex==i) {
-
-
+            Node<T> curNode = head;
+            if (head != null) {
+                if (i > 0) {
+                    if (i < count) {
+                        int j = 0;
+                        i--;
+                        while (j != i) {
+                            curNode = curNode.getNext();
+                            j++;
+                        }
+                        Node<T> elemToBeNext = curNode.getNext().getNext();
+                        curNode.setNext(elemToBeNext);
+                        count--;
+                    }
+                } else {
+                    head = head.getNext();
+                    count--;
                 }
-                else {
-                    cur = cur.getNext();
-
-                }
-                getIndex++;
             }
-            cur.setNext(cur.next);
         }
     }
 
