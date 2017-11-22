@@ -13,7 +13,7 @@ public class ProductsDaoImpl implements ProductsDao {
         Class.forName("com.mysql.jdbc.Driver");
         c = DriverManager
                 .getConnection("jdbc:mysql://localhost:3306/test",
-                        "root", "natalia2017");
+                        "root", "123");
 
 
     }
