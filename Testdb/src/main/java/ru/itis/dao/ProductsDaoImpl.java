@@ -13,7 +13,7 @@ public class ProductsDaoImpl implements ProductsDao {
         Class.forName("com.mysql.jdbc.Driver");
         c = DriverManager
                 .getConnection("jdbc:mysql://localhost:3306/test",
-                        "root", "123");
+                        "root", "natalia2017");
 
 
     }
@@ -106,8 +106,49 @@ public class ProductsDaoImpl implements ProductsDao {
     }
 
     @Override
-    public Integer getBidPrice(int[] id) throws ClassNotFoundException, SQLException {
-        return null;
+    public int getBidPrice(int[] id) throws ClassNotFoundException, SQLException {
+        int sum=0;
+        Statement stmt = c.createStatement();
+        for(int i=0;i<id.length;i++) {
+            String sql  = "SELECT * FROM shop WHERE id = " + id[i];
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            int price = rs.getInt("price");
+            sum=sum+price;
+
+        }
+        stmt.close();
+
+        return sum;
     }
+
+    @Override
+    public void updateDiscount(int discount, String factory) throws ClassNotFoundException, SQLException {
+        int counter = 0;
+        List<Integer> productsList = new ArrayList<>();
+        String sql = "SELECT * FROM shop Where factory = " + factory;
+        PreparedStatement stmt = c.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            int price = rs.getInt("price");
+            productsList.add(id);
+            productsList.add(price);
+            counter=counter+2;
+        }
+        stmt.close();
+        Statement stmt2 = c.createStatement();
+         for(int i=0;i<counter;i=i+2) {
+             int priceDesc = (productsList.get(i+1)) - (productsList.get(i+1)*discount/100);
+             String sql2 = "UPDATE shop \n" +
+                     "SET price =  " + priceDesc  + " \n" +
+                     " WHERE id = " + productsList.get(i);
+             stmt2.executeUpdate(sql2);
+         }
+        stmt2.close();
+
+    }
+
 
 }

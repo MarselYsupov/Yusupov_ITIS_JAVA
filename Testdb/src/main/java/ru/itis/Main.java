@@ -6,16 +6,14 @@ import ru.itis.models.Product;
 
 import java.sql.SQLException;
 
-
-import java.sql.SQLException;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         ProductsDao dao = new ProductsDaoImpl();
-        Product products = new Product(12,"'Chocolate '", "'OOO.MilkChocolateFactory 48'", 80, 100);
-        dao.update(products);
+//        Product products = new Product(2,"'Milk'", "'MilkFactory 3'", 60,5);
+//        dao.update(products);
+         dao.updateDiscount(10,"'MilkFactory 3'");
         System.out.println(dao.getAllProducts());
 
     }
+
 }

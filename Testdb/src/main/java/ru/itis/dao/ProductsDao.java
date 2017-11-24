@@ -21,5 +21,7 @@ public interface ProductsDao {
 
     void update(Product product) throws ClassNotFoundException, SQLException;
 
-    Integer getBidPrice(int [] id) throws ClassNotFoundException, SQLException;
+    int getBidPrice(int[] id) throws ClassNotFoundException, SQLException;
+
+    void updateDiscount (int discount,String factory) throws ClassNotFoundException, SQLException;
 }
