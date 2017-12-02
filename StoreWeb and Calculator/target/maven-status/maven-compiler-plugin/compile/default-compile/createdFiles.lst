@@ -1,0 +1,10 @@
+ru\itis\models\Product.class
+ru\itis\Calculate\Calculator.class
+ru\itis\Main.class
+ru\itis\web\CalculatorServlet.class
+ru\itis\dao\ProductsDao.class
+ru\itis\web\ProductServlet.class
+ru\itis\dao\ProductsDaoImpl.class
+ru\itis\web\HelloServlet.class
+ru\itis\web\AllProductsServlet.class
+ru\itis\web\CalculateServlet.class
