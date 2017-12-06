@@ -15,18 +15,45 @@ import java.util.List;
 public class AllProductsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         try {
-            ProductsDao dao = new ProductsDaoImpl();
-            List<Product> product = dao.getAllProducts();
-            resp.getWriter().write(product.toString());
+            ProductsDao productsDao = new ProductsDaoImpl();
+            List<Product> productsList = productsDao.getAllProducts();
             String str = "<html>\n" +
                     "<head>\n" +
                     "    <meta charset=\"UTF-8\">\n" +
-                    "    <title>First page</title>\n" +
+                    "    <style>\n" +
+                    "       table, td, th {" +
+                    "           border: 1px solid black;" +
+                    "           border-collapse: collapse;" +
+                    "       }" +
+                    "    </style>\n" +
+                    "    <title>Все продукты</title>\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "<h1>Продукты</h1>";
+                    "<table>\n" +
+                    "   <tr>\n" +
+                    "        <th>id</th>\n" +
+                    "        <th>name</th>\n" +
+                    "        <th>factory</th>\n" +
+                    "        <th>price</th>\n" +
+                    "        <th>count</th>\n" +
+                    "    </tr>\n";
+            for (int i = 0; i < productsList.size(); i++) {
+                Product product = productsList.get(i);
+                String productRowStr = "<tr>\n";
+                productRowStr += "<td>" + product.getId() + "</td>\n";
+                productRowStr += "<td>" + product.getName() + "</td>\n";
+                productRowStr += "<td>" + product.getFactory() + "</td>\n";
+                productRowStr += "<td>" + product.getPrice() + "</td>\n";
+                productRowStr += "<td>" + product.getCount() + "</td>\n";
+                productRowStr += "</tr>\n";
+                str += productRowStr;
+            }
+            str += "</table>\n";
+            str += "</body>\n";
+            str += "</html>";
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write(str);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

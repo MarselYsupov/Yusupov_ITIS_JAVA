@@ -10,9 +10,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        ProductsDao dao = new ProductsDaoImpl();
+            ProductsDao dao = new ProductsDaoImpl();
         Calculator calculator = new Calculator();
-        System.out.println(dao.getProduct(1).toString());
+        String str = dao.getProduct(1).toString();
+        System.out.println(dao.getAllProducts());
 
     }
 

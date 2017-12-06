@@ -53,4 +53,22 @@
 <url-pattern>/calculate</url-pattern>
 </servlet-mapping>
 
+
+ <servlet>
+        <servlet-name>addProductForm</servlet-name>
+        <servlet-class>ru.itis.web.AddProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addProductForm</servlet-name>
+        <url-pattern>/addProduct</url-pattern>
+    </servlet-mapping>
+
+<servlet>
+        <servlet-name>addProduct</servlet-name>
+        <servlet-class>ru.itis.web.SaveProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addProduct</servlet-name>
+        <url-pattern>/saveProduct</url-pattern>
+    </servlet-mapping>
 </web-app>

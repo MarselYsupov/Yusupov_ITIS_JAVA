@@ -15,7 +15,11 @@ public class Product {
         this.count = count;
     }
 
-    public Product() {
+    public Product( String name, String factory, int price, int count) {
+        this.name = name;
+        this.factory = factory;
+        this.price = price;
+        this.count = count;
     }
 
     public int getId() {
